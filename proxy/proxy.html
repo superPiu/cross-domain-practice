@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cros 实现跨域</title>
+    <title>Proxy 实现跨域</title>
 </head>
 <body>
-    <p>这里是cros跨域请求demo</p>
+    <p>这里是proxy跨域请求demo</p>
     <div></div>
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script>
         $.ajax({
-            'url':"http://localhost:8003/user/list",
+            'url':"http://localhost:6000/user/list",
             'method':'GET',
             'data':{
                 "pageNo":1,

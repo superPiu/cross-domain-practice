@@ -4,16 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cros 实现跨域</title>
+    <title>JSONP 实现跨域</title>
 </head>
 <body>
-    <p>这里是cros跨域请求demo</p>
+    <p>这里是一个jsonp跨域demo</p>
     <div></div>
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script>
         $.ajax({
-            'url':"http://localhost:8003/user/list",
+            'url':"http://localhost:8004/user/list",
             'method':'GET',
+            'dataType':"jsonp",
             'data':{
                 "pageNo":1,
                 "pageSize":5
