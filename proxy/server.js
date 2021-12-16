@@ -1,18 +1,23 @@
 const express = require("express")
 const {createProxyMiddleware} = require("http-proxy-middleware")
+const fs =require("fs")
 
 const app = express()
 console.log(__dirname)
 app.use(express.static(__dirname+'/'))
 
-app.use('/user/list',createProxyMiddleware({
-    target:'https://click.suning.cn/sa/jsConfig.action?dm=www.suning.com',
+app.use('^/sa',createProxyMiddleware({
+    target:'http://click.suning.cn',
     changeOrign:true,
-    onProxyRes:(proxyRes,req,res)=>{
-        res.header('Access-Control-Allow-Origin', '*');
-        res.end(res)
-        console.log(proxyRes)
-    }
+    // ssl:{
+    //     key: fs.readFileSync('privatekey.pem'), 
+    //     cert: fs.readFileSync('certificate.pem')  // SELF-SIGNED CERTIFICATE
+    //   }
+    // onProxyRes:(proxyRes,req,res)=>{
+    //     res.header('Access-Control-Allow-Origin', '*');
+    //     res.end(res)
+    //     console.log(proxyRes)
+    // }
 }))
 
 app.listen('5000',() => {
