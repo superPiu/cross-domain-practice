@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RESTful 接口设计</title>
+</head>
+<body>
+    <p>RESTful 接口设计demo</p>
+    <div>
+        <button id="search">查询</button>
+        <button id="add">新增</button>
+        <button id="modify">修改</button>
+        <button id="delete">删除</button>
+    </div>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function(){
+            $('#search').click(function(){
+                request('GET',{
+                        "pageNo":1,
+                        "pageSize":5
+                    });
+            })
+            $('#add').click(function(){
+                request('PUT',{
+                    "userName":'张三',
+                    "age":20
+                });
+            })
+            $('#delete').click(function(){
+                request('DELETE',{
+                    "userId":'15060057'
+                });
+            })
+            $('#modify').click(function(){
+                request('POST',{
+                    "userId":'15060057',
+                    "userName":'胡来'
+                });
+            })
+            function request(method,data){
+                $.ajax({
+                    'url':"/user/list",
+                    'method':method,
+                    'data':data,
+                    'success':(res)=>{
+                        alert(res)
+                    }
+                })
+            }
+        })
+    </script>
+</body>
+</html>
