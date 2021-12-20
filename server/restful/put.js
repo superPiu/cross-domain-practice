@@ -1,4 +1,3 @@
-const { response } = require("express")
 const express = require("express")
 
 const app = express()
@@ -15,24 +14,19 @@ app.all('*',(req,res,next) => {
     }
 })
 app.use(express.static(__dirname+'/static'))
-app.get('/user/list',function(req,res,next){
+app.use(bodyParser.join())
+app.use(bodyParser.urlencoded({extended:false}))
+
+app.put('/user',function(req,res,next){
+    let params = req.body
+    console.log(params)
     let resData = {
         'responseCode' : '0000',
-        'data':[],
-        'total':10
-
+        'responseMsg':`用户修改成功`
     }
-    res.send(JSON.stringify(resData));
+    res.send(resData)
 })
-app.put('/user/list',function(req,res,next){
-    res.send('操作成功,你真棒!')
-})
-app.post('/user/list',function(req,res,next){
-    res.send('操作成功,你真棒')
-})
-app.delete('/user/list',function(req,res,next){
-    res.send('操作成功,你真棒')
-})
+
 app.listen('5000',() => {
-    console.log("static")
+    console.log("put")
 })
